@@ -13,16 +13,28 @@
 console.log("Browser Version");
 
 // 1. Implement a Try Catch routeine into this code below
+  try {
   var results = 12;
-
   console.log(results);
-  console.log('An error occured:', error.message);
+} catch (error) {
+  console.log('An error occurred:', error.message);
+}
 
 // 2. Take the code produced in #1 and create a routine that will generate an error 
 //    provide that code here
+try {
+  var results = 12;
+  console.log(results);
 
+  // This line deliberately generates a ReferenceError —
+  // "undeclaredVariable" has never been defined anywhere
+  console.log(undeclaredVariable);
+
+} catch (error) {
+  console.log('An error occurred:', error.message);
+}
 // 3. Provide in words what the output of the error is here
-
+An error occurred: undeclaredVariable is not defined.
 
 //-----------------//
 // Finally //
@@ -30,14 +42,24 @@ console.log("Browser Version");
 console.log("Finally");
 
 // 1. Create a try catch and finally with the following details
-      console.log(Trying);
-      console.log('An error occured:', error.message);
-      console.log('Finally blocked executed');
+try {
+  console.log(Trying);                         // ReferenceError: Trying is not defined
+} catch (error) {
+  console.log('An error occurred:', error.message);
+} finally {
+  console.log('Finally block executed');
+}
   
 // 2. Take the code from #1 in Finally and take first part and ensure it's not produced
 //    as an error and create a way to perform a finally statement with the following output
       
-      console.log('Finally blocked it, yay')
+   try {
+  console.log('Trying');                        // Fix: wrap in quotes → now a valid string
+} catch (error) {
+  console.log('An error occurred:', error.message);
+} finally {
+  console.log('Finally blocked it, yay');
+}
 
 
 //-----------------//
@@ -57,7 +79,17 @@ console.log("Throw");
 // 4. Provide a catch error with a response of 
    console.log(error.message)
 
+var number = "b";
 
+try {
+  if (isNaN(number)) {
+    throw new Error("Not a numeric value");
+  } else {
+    console.log("It is a numeric value");
+  }
+} catch (error) {
+  console.log(error.message);
+}
 
 </script>
 </head>
